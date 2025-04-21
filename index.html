@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rangli Yuzli Forma</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f0f0f0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    .form-container {
+      background-color: white;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+      text-align: center;
+    }
+
+    input {
+      padding: 10px;
+      width: 80%;
+      margin-bottom: 15px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+
+    .emoji {
+      font-size: 100px;
+      margin-top: 20px;
+    }
+
+    .feedback {
+      margin-top: 15px;
+      font-size: 16px;
+      font-weight: bold;
+    }
+
+    .positive {
+      color: green;
+    }
+
+    .negative {
+      color: red;
+    }
+  </style>
+</head>
+<body>
+  <div class="form-container">
+    <h2>Yuzli Forma</h2>
+    <input type="text" id="userInput" placeholder="Biror so'z kiriting..." />
+    <div class="emoji" id="emoji">??</div>
+    <div class="feedback" id="feedback"></div>
+  </div>
+
+  <script>
+    const inputField = document.getElementById('userInput');
+    const emoji = document.getElementById('emoji');
+    const feedback = document.getElementById('feedback');
+
+    inputField.addEventListener('input', () => {
+      const inputValue = inputField.value.trim().toLowerCase();
+
+      if (inputValue.includes("yaxshi") || inputValue.includes("ajoyib") || inputValue.includes("zo'r")) {
+        emoji.textContent = "??"; // Pozitiv yuz
+        emoji.style.color = "green";
+        feedback.textContent = "Ajoyib! Yaxshi kiritdingiz!";
+        feedback.classList.remove('negative');
+        feedback.classList.add('positive');
+      } else if (inputValue.includes("yomon") || inputValue.includes("beshik") || inputValue.includes("salbiy")) {
+        emoji.textContent = "??"; // Salbiy yuz
+        emoji.style.color = "red";
+        feedback.textContent = "O'ylab ko'ring! Bu salbiy ma'lumot!";
+        feedback.classList.remove('positive');
+        feedback.classList.add('negative');
+      } else {
+        emoji.textContent = "??"; // Neytral yuz
+        emoji.style.color = "gray";
+        feedback.textContent = "Boshqa biror narsa kiritishingiz mumkin.";
+        feedback.classList.remove('positive', 'negative');
+      }
+    });
+  </script>
+</body>
+</html>
